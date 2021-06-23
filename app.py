@@ -16,7 +16,7 @@ def webhook():
     res = processRequest(request)
     res = json.dumps(res, indent=4)
     r = make_response(res)
-    r.headers['Accept'] = 'application/json'
+    #r.headers['Accept'] = 'application/json'
     return r
 
 
