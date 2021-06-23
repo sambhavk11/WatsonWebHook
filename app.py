@@ -25,8 +25,8 @@ def processRequest(req):
     
     number1=int(req.form.get("number1"))
     number2 = int(req.form.get("number2"))
-    
-    return "the sum is : " + str(number1+number2)
+    fulfilmentres="the sum is : " + str(number1+number2)
+    return {"fulfilmentres":fulfilmentres}
 
 if __name__ == '__main__':
     app.run()
