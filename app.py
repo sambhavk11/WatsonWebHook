@@ -18,8 +18,8 @@ def webhook():
     r = make_response(res)
     r.headers['Content-type'] = 'application/json'
     r.headers['Accept'] = 'application/json'
-    #return r
-    return processRequest(request)
+    return r
+
 
 
 # processing the request from IBM Watson
