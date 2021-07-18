@@ -13,8 +13,9 @@ def hello():
 
 # geting and sending response to IBM Watson
 @app.route('/webhook', methods=['POST'])
-def webhook():   
-    res = processRequest(request)
+def webhook():
+    req = request.get_json(silent=True, force=True)
+    res = processRequest(req)
     res = json.dumps(res, indent=4)
     r = make_response(res)
     r.headers['Content-type'] = 'application/json'
