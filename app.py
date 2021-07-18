@@ -26,13 +26,26 @@ def webhook():
 # processing the request from IBM Watson
 def processRequest(req):
     
+    
+    result = req.get("queryResult")
+    #user_says=result.get("queryText")
+    #log.write_log(sessionID, "User Says: "+user_says)
+    parameters = result.get("parameters")
+    FromCurrency=parameters.get("FromCurrency")
+    ToCurrency= parameters.get("ToCurrency")
+    
+    
+	 
+    intent = result.get("intent").get('displayName')
+    
+    
     number1=1
     number2 =4
     URL="https://free.currconv.com/api/v7/convert"
     PARAMS={"q":"SGD_INR","compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
     r=requests.get(url=URL,params=PARAMS)
     data=r.json()
-    fulfilmentres="the currency conversion for now is " + str(data['SGD_INR'])
+    fulfilmentres="the currency conversion for now is  from" + FromCurrency + "to" + ToCurrency +" On intent"+ intent
     return {"fulfillmentText":fulfilmentres}
 
 if __name__ == '__main__':
