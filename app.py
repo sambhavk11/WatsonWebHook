@@ -34,7 +34,7 @@ def processRequest(req):
     parameters = result.get("parameters")
     FromCurrency=parameters.get("FromCurrency")
     ToCurrency= parameters.get("ToCurrency")
-    
+    queryCouple=FromCurrency+ToCurrency
     
 	 
     intent = result.get("intent").get('displayName')
@@ -43,10 +43,10 @@ def processRequest(req):
     number1=1
     number2 =4
     URL="https://free.currconv.com/api/v7/convert"
-    PARAMS={"q":"SGD_INR","compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
+    PARAMS={"q":queryCouple,"compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
     r=requests.get(url=URL,params=PARAMS)
     data=r.json()
-    fulfilmentres="the currency conversion for now is  from" + FromCurrency + "to" + ToCurrency +" On intent"+ intent
+    fulfilmentres="the currency conversion for now from" + FromCurrency + "to" + ToCurrency +"  is "+ str(data[queryCouple])
     return {"fulfillmentText":fulfilmentres}
 
 if __name__ == '__main__':
