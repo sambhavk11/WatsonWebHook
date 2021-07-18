@@ -25,8 +25,8 @@ def webhook():
 # processing the request from IBM Watson
 def processRequest(req):
     
-    number1=int(req.form.get("number1"))
-    number2 = int(req.form.get("number2"))
+    number1=1
+    number2 =4
     fulfilmentres="the sum is : " + str(number1+number2)
     return {"fulfilmentres":fulfilmentres}
 
