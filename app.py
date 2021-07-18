@@ -28,7 +28,7 @@ def processRequest(req):
     number1=1
     number2 =4
     fulfilmentres="the sum is : " + str(number1+number2)
-    return {"fulfilmentres":fulfilmentres}
+    return {"fulfillmentText":fulfilmentres}
 
 if __name__ == '__main__':
     app.run()
