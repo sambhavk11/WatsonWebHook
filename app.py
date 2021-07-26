@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, make_response
 import json
 import requests
+from forex_python.converter import CurrencyRates
 
 
 app = Flask(__name__)
@@ -34,19 +35,20 @@ def processRequest(req):
     parameters = result.get("parameters")
     FromCurrency=parameters.get("FromCurrency")
     ToCurrency= parameters.get("ToCurrency")
-    queryCouple=FromCurrency+"_"+ToCurrency
+    c = CurrencyRates()
+    conversion=str(c.get_rate('sgd', 'INR'))[:5]
     
 	 
     intent = result.get("intent").get('displayName')
     
     
-    number1=1
-    number2 =4
-    URL="https://free.currconv.com/api/v7/convert"
-    PARAMS={"q":queryCouple,"compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
-    r=requests.get(url=URL,params=PARAMS)
-    data=r.json()
-    fulfilmentres="The currency conversion for now from " + FromCurrency + " to " + ToCurrency +" is "+ str(data[queryCouple])
+    #number1=1
+    #number2 =4
+    #URL="https://free.currconv.com/api/v7/convert"
+    #PARAMS={"q":queryCouple,"compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
+    #r=requests.get(url=URL,params=PARAMS)
+    #data=r.json()
+    fulfilmentres="The currency conversion for now from " + FromCurrency + " to " + ToCurrency +" is "+ conversion)
     return {"fulfillmentText":fulfilmentres}
 
 if __name__ == '__main__':
