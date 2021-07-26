@@ -36,7 +36,7 @@ def processRequest(req):
     FromCurrency=parameters.get("FromCurrency")
     ToCurrency= parameters.get("ToCurrency")
     c = CurrencyRates()
-    conversion=str(c.get_rate('sgd', 'INR'))[:5]
+    conversion=str(c.get_rate(FromCurrency, ToCurrency))[:5]
     
 	 
     intent = result.get("intent").get('displayName')
