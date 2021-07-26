@@ -48,7 +48,7 @@ def processRequest(req):
     #PARAMS={"q":queryCouple,"compact":"ultra","apiKey":"7a2db6e45a77e71a05c9"}
     #r=requests.get(url=URL,params=PARAMS)
     #data=r.json()
-    fulfilmentres="The currency conversion for now from " + FromCurrency + " to " + ToCurrency +" is "+ conversion)
+    fulfilmentres="The currency conversion for now from " + FromCurrency + " to " + ToCurrency +" is "+ conversion
     return {"fulfillmentText":fulfilmentres}
 
 if __name__ == '__main__':
